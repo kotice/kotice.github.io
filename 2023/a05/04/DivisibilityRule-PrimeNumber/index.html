@@ -146,7 +146,7 @@
 <h4 id="欧几里德算法"><a href="#欧几里德算法" class="headerlink" title="欧几里德算法"></a>欧几里德算法</h4><script type="math/tex; mode=display">
 gcd(a, b) = gcd(b, a\ mod\ b)</script><h4 id="裴蜀定理-贝祖定理"><a href="#裴蜀定理-贝祖定理" class="headerlink" title="裴蜀定理(贝祖定理)"></a>裴蜀定理(贝祖定理)</h4><script type="math/tex; mode=display">
 方程\ ax + by = d\ 有无穷多解当且仅当\ gcd(a, b) | d</script><p>Proof: 考虑证明一个等价的形式 $ax + by = 1$ 有无穷多解当且仅当 $a, b$ 互质. 因为 $gcd(a, b) = 1$, 可得 $gcd(b, a\ mod\ b) = 1$.</p>
-<p>不妨做带余除法, 并递归去做欧几里德算法.直到 $a\ mod\ b = 1$</p>
+<p>不妨做带余除法, 并递归去做欧几里德算法.直到 $a\ mod\ b = 1$.</p>
 <p>$a = bq<em>1 + r_1$<br>$b = r_1q_2 + r_2$<br>$r_1 = r_2q_3 + r_3$<br>$r</em>{i} = r<em>{i + 1}q</em>{i + 2} + r<em>{i + 2}$<br>$r</em>{n - 1} = r<em>{n}q</em>{n + 1}$</p>
 <p>此时 $x = q_{n +1}, y = 1$ 就是方程 $a’x + b’y = 1$ 的一组解. 直接回溯即可.<br>通解 $x = x’ - kb, y = y’ + ka$</p>
 <h4 id="扩展欧几里德算法-exgcd"><a href="#扩展欧几里德算法-exgcd" class="headerlink" title="扩展欧几里德算法(exgcd)"></a>扩展欧几里德算法(exgcd)</h4><p>$a\ mod\ b = a - \lfloor\frac{a}{b}\rfloor \times b$<br>$ax + by = 1, bx’ + (a\ mod\ b)y’ = 1$<br>$ax + by = bx’ + (a - \lfloor\frac{a}{b}\rfloor)y’$</p>
@@ -154,8 +154,8 @@ gcd(a, b) = gcd(b, a\ mod\ b)</script><h4 id="裴蜀定理-贝祖定理"><a href
 <p>$x = y’, y = x’ - \lfloor\frac{a}{b}\rfloor y’$.</p>
 <p>伪代码如下</p>
 <p>$EXGCD\ (a,\ b,\ \&amp;x,\ \&amp;y)$<br>$1\ \ \ \ if\ \ b = 0$<br>$2\ \ \ \ \ \ \ \ \ \ x \leftarrow 1,\ y \leftarrow 0$<br>$3\ \ \ \ else$<br>$4\ \ \ \ \ \ \ \ \ EXGCD\ (b,\ a\ mod\ b,\ x,\ y)$<br>$5\ \ \ \ \ \ \ \ \  t \leftarrow x$<br>$6\ \ \ \ \ \ \ \ x \leftarrow y$<br>$7\ \ \ \ \ \ \ \ y \leftarrow t - \lfloor\frac{a}{b}\rfloor \times y$</p>
-<h3 id="素数"><a href="#素数" class="headerlink" title="素数"></a>素数</h3><h4 id="算数基本定理"><a href="#算数基本定理" class="headerlink" title="算数基本定理"></a>算数基本定理</h4><p>任何一个大于 $1$ 的整数都可以表示为 $\prod{p_k^{\alpha_i}}$</p>
-<h4 id="约数相关"><a href="#约数相关" class="headerlink" title="约数相关"></a>约数相关</h4><p>将 $p_k$ 互相组合, 所得乘积的集合即为该数除 $1$ 外的约数集. 考虑乘法原理, 有约数个数 $S = \prod(\alpha_i + 1)$.</p>
+<h3 id="素数"><a href="#素数" class="headerlink" title="素数"></a>素数</h3><h4 id="算数基本定理"><a href="#算数基本定理" class="headerlink" title="算数基本定理"></a>算数基本定理</h4><p>任何一个大于 $1$ 的整数都可以表示为 $\prod{p_k^{\alpha_k}}$</p>
+<h4 id="约数相关"><a href="#约数相关" class="headerlink" title="约数相关"></a>约数相关</h4><p>将 $p_k$ 互相组合, 所得乘积的集合即为该数除 $1$ 外的约数集. 考虑乘法原理, 有约数个数 $S = \prod(\alpha_k + 1)$.</p>
 <p>对于约数和, 考虑构造一个多项式, 的质因数互相组合的去乘, 并使之相使所有加. 可以构造出 $S’ = \prod\sum{(p_k^{\alpha_k} + 1)}$.</p>
 <h4 id="无穷多素数的证明"><a href="#无穷多素数的证明" class="headerlink" title="无穷多素数的证明"></a>无穷多素数的证明</h4><p>对于调和级数 $f(n) = \sum_{i = 1}^\infty\frac{1}{i}$. 对于素数和 1, 可以直接用原数表示. 对于合数, 可以将其分解质因数. 这样我们可以像求约数和那样, 构造多项式, 将所有正整数表示出来.于是我们有:</p>
 <script type="math/tex; mode=display">
