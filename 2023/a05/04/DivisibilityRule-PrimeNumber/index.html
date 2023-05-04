@@ -159,12 +159,12 @@ gcd(a, b) = gcd(b, a\ mod\ b)</script><h4 id="裴蜀定理-贝祖定理"><a href
 <p>对于约数和, 考虑构造一个多项式, 的质因数互相组合的去乘, 并使之相使所有加. 可以构造出 $S’ = \prod\sum{(p_k^{\alpha_k} + 1)}$.</p>
 <h4 id="无穷多素数的证明"><a href="#无穷多素数的证明" class="headerlink" title="无穷多素数的证明"></a>无穷多素数的证明</h4><p>对于调和级数 $f(n) = \sum_{i = 1}^\infty\frac{1}{i}$. 对于素数和 1, 可以直接用原数表示. 对于合数, 可以将其分解质因数. 这样我们可以像求约数和那样, 构造多项式, 将所有正整数表示出来.于是我们有:</p>
 <script type="math/tex; mode=display">
-\sum_{i = 1}^\infty\frac{1}{i} = \prod\sum{(p_k^{\alpha_k} + 1)}</script><p>假设素数是有限的, 等号右边的函数应有一个上确界. 而调和级数是发散的, 与假设矛盾. 故素数为无穷个成立.</p>
+\sum_{i = 1}^\infty\frac{1}{i} = \prod\sum{(\frac{1}{p_k^{\alpha_k}} + 1)}</script><p>假设素数是有限的, 等号右边的函数应有一个上确界. 而调和级数是发散的, 与假设矛盾. 故素数为无穷个成立.</p>
 <h4 id="求素数"><a href="#求素数" class="headerlink" title="求素数"></a>求素数</h4><p>求 1 到 n 所有素数.</p>
 <h5 id="试除法"><a href="#试除法" class="headerlink" title="试除法"></a>试除法</h5><p>对于每个数, 尝试所有 2 到 n / 2 的整数. 时间复杂度 $O(n^2)$.</p>
 <h5 id="埃氏筛"><a href="#埃氏筛" class="headerlink" title="埃氏筛"></a>埃氏筛</h5><p>每次遍历到一个没被筛过的数, 将其加入素数列表并将其倍数筛去. 时间复杂度 $O(n\ ln\ ln\ n)$.</p>
 <h5 id="欧拉筛"><a href="#欧拉筛" class="headerlink" title="欧拉筛"></a>欧拉筛</h5><p>埃氏筛的瓶颈在于有很多数被重复筛, 考虑每个数只用其最小质因子来筛. 时间复杂度 $O(n)$.伪代码如下.</p>
-<p>$Euler\ (n)$<br>$1\ \ \ \ for\ \ i\ \ in\ \ 2..n$<br>$2\ \ \ \ \ \ \ \ \ \ if\ \ i\ \ isn’t\ \ visited$<br>$3\ \ \ \ \ \ \ \ \ \ add\ \ i\ \ to\ \ prime\ \ number\ \ list$<br>$4\ \ \ \ \ \ \ \ \ \ for\ \ j\ \ in\ \ prime\ \ number\ \ list$<br>$5\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if\ \ the\ \ minimum\ \ prime\ \ factor\ \ of\ \ i\ \ &gt;=\ \ j$<br>$6\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ let\ \ i \times j\ \ be\ \ visited$</p>
+<p>$Euler\ (n)$<br>$1\ \ \ \ for\ \ i\ \ in\ \ 2..n$<br>$2\ \ \ \ \ \ \ \ \ \ if\ \ i\ \ isn’t\ \ be\ \ visited$<br>$3\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ add\ \ i\ \ to\ \ prime\ \ number\ \ list$<br>$4\ \ \ \ \ \ \ \ \ \ for\ \ j\ \ in\ \ prime\ \ number\ \ list$<br>$5\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if\ \ the\ \ minimum\ \ prime\ \ factor\ \ of\ \ i\ \ &gt;=\ \ j$<br>$6\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ let\ \ i \times j\ \ be\ \ visited$</p>
 
             </div>
 
