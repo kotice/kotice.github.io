@@ -34,6 +34,26 @@
 
 			    
   
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script async type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
 
 
     <script src="/js/jquery.min.js"></script>
@@ -76,7 +96,7 @@
 	            <a href="#s1">分类</a>
 	                    <ul class="submenu">
 	                        <li>
-	                        <a class="category-link" href="/categories/Test/">Test</a>
+	                        <a class="category-link" href="/categories/Math/">Math</a></li><li><a class="category-link" href="/categories/Test/">Test</a>
 	                    </ul>
 	        </li>
 	        
@@ -115,12 +135,12 @@
 </nav>
 
         <div id="main" >
-            <div class ="post_page_title_img" style="height: 25rem;background-image: url();background-position: center; background-repeat:no-repeat; background-size:cover;-moz-background-size:cover;overflow:hidden;" >
-                <a href="#" style="padding: 4rem 4rem 2rem 4rem ;"><h2 ></h2></a>
+            <div class ="post_page_title_img" style="height: 25rem;background-image: url(/../image/p2.jpg);background-position: center; background-repeat:no-repeat; background-size:cover;-moz-background-size:cover;overflow:hidden;" >
+                <a href="#" style="padding: 4rem 4rem 2rem 4rem ;"><h2 >整除理论与素数初步</h2></a>
             </div>
             <!-- Post -->
             <div class="typo" style="padding: 3rem;">
-                <h1 id="整除理论与素数初步"><a href="#整除理论与素数初步" class="headerlink" title="整除理论与素数初步"></a>整除理论与素数初步</h1><h2 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h2><p>未经说明，本文讨论范围仅限于整数。</p>
+                <h2 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h2><p>未经说明，本文讨论范围仅限于整数。</p>
 <h3 id="整除理论"><a href="#整除理论" class="headerlink" title="整除理论"></a>整除理论</h3><h4 id="带余除法"><a href="#带余除法" class="headerlink" title="带余除法"></a>带余除法</h4><p>对于给定的一个被除数 $a$, 和非零除数 $b$, 存在 $q, r$ 使得 $a = q \times b + r$, 其中 $r$ 满足 $r \in [0, b)$. 若 $r = 0$ 则称 $b$ 整除 $a$, 或 $a$ 被 $b$ 整除.记作 $b | a$.</p>
 <p>基本定理: 对于任意的整数 $a, b\ (b \not = 0)$, 都存在 $q, r\ (r \in [0, b))$, 满足等式 $a = b \times q + r$.</p>
 <h4 id="欧几里德算法"><a href="#欧几里德算法" class="headerlink" title="欧几里德算法"></a>欧几里德算法</h4><script type="math/tex; mode=display">
