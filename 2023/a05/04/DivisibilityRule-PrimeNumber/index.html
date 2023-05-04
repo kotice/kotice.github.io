@@ -115,28 +115,37 @@
 </nav>
 
         <div id="main" >
-            <div class ="post_page_title_img" style="height: 25rem;background-image: url(/../image/p1.jpg);background-position: center; background-repeat:no-repeat; background-size:cover;-moz-background-size:cover;overflow:hidden;" >
-                <a href="#" style="padding: 4rem 4rem 2rem 4rem ;"><h2 >hello-world</h2></a>
+            <div class ="post_page_title_img" style="height: 25rem;background-image: url();background-position: center; background-repeat:no-repeat; background-size:cover;-moz-background-size:cover;overflow:hidden;" >
+                <a href="#" style="padding: 4rem 4rem 2rem 4rem ;"><h2 ></h2></a>
             </div>
             <!-- Post -->
             <div class="typo" style="padding: 3rem;">
-                <p>It works.</p>
-<p>Highlight Test</p>
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
-
-<span class="token keyword">signed</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">&#123;</span>
-  std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"hello, world"</span> <span class="token operator">&lt;&lt;</span> <span class="token char">'\n'</span>
-  <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>Mathjax</p>
+                <h1 id="整除理论与素数初步"><a href="#整除理论与素数初步" class="headerlink" title="整除理论与素数初步"></a>整除理论与素数初步</h1><h2 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h2><p>未经说明，本文讨论范围仅限于整数。</p>
+<h3 id="整除理论"><a href="#整除理论" class="headerlink" title="整除理论"></a>整除理论</h3><h4 id="带余除法"><a href="#带余除法" class="headerlink" title="带余除法"></a>带余除法</h4><p>对于给定的一个被除数 $a$, 和非零除数 $b$, 存在 $q, r$ 使得 $a = q \times b + r$, 其中 $r$ 满足 $r \in [0, b)$. 若 $r = 0$ 则称 $b$ 整除 $a$, 或 $a$ 被 $b$ 整除.记作 $b | a$.</p>
+<p>基本定理: 对于任意的整数 $a, b\ (b \not = 0)$, 都存在 $q, r\ (r \in [0, b))$, 满足等式 $a = b \times q + r$.</p>
+<h4 id="欧几里德算法"><a href="#欧几里德算法" class="headerlink" title="欧几里德算法"></a>欧几里德算法</h4><script type="math/tex; mode=display">
+gcd(a, b) = gcd(b, a\ mod\ b)</script><h4 id="裴蜀定理-贝祖定理"><a href="#裴蜀定理-贝祖定理" class="headerlink" title="裴蜀定理(贝祖定理)"></a>裴蜀定理(贝祖定理)</h4><script type="math/tex; mode=display">
+方程\ ax + by = d\ 有无穷多解当且仅当\ gcd(a, b) | d</script><p>Proof: 考虑证明一个等价的形式 $ax + by = 1$ 有无穷多解当且仅当 $a, b$ 互质. 因为 $gcd(a, b) = 1$, 可得 $gcd(b, a\ mod\ b) = 1$.</p>
+<p>不妨做带余除法, 并递归去做欧几里德算法.直到 $a\ mod\ b = 1$</p>
+<p>$a = bq<em>1 + r_1$<br>$b = r_1q_2 + r_2$<br>$r_1 = r_2q_3 + r_3$<br>$r</em>{i} = r<em>{i + 1}q</em>{i + 2} + r<em>{i + 2}$<br>$r</em>{n - 1} = r<em>{n}q</em>{n + 1}$</p>
+<p>此时 $x = q_{n +1}, y = 1$ 就是方程 $a’x + b’y = 1$ 的一组解. 直接回溯即可.<br>通解 $x = x’ - kb, y = y’ + ka$</p>
+<h4 id="扩展欧几里德算法-exgcd"><a href="#扩展欧几里德算法-exgcd" class="headerlink" title="扩展欧几里德算法(exgcd)"></a>扩展欧几里德算法(exgcd)</h4><p>$a\ mod\ b = a - \lfloor\frac{a}{b}\rfloor \times b$<br>$ax + by = 1, bx’ + (a\ mod\ b)y’ = 1$<br>$ax + by = bx’ + (a - \lfloor\frac{a}{b}\rfloor)y’$</p>
+<p>化简得</p>
+<p>$x = y’, y = x’ - \lfloor\frac{a}{b}\rfloor y’$.</p>
+<p>伪代码如下</p>
+<p>$EXGCD\ (a,\ b,\ \&amp;x,\ \&amp;y)$<br>$1\ \ \ \ if\ \ b = 0$<br>$2\ \ \ \ \ \ \ \ \ \ x \leftarrow 1,\ y \leftarrow 0$<br>$3\ \ \ \ else$<br>$4\ \ \ \ \ \ \ \ \ EXGCD\ (b,\ a\ mod\ b,\ x,\ y)$<br>$5\ \ \ \ \ \ \ \ \  t \leftarrow x$<br>$6\ \ \ \ \ \ \ \ x \leftarrow y$<br>$7\ \ \ \ \ \ \ \ y \leftarrow t - \lfloor\frac{a}{b}\rfloor \times y$</p>
+<h3 id="素数"><a href="#素数" class="headerlink" title="素数"></a>素数</h3><h4 id="算数基本定理"><a href="#算数基本定理" class="headerlink" title="算数基本定理"></a>算数基本定理</h4><p>任何一个大于 $1$ 的整数都可以表示为 $\prod{p_k^{\alpha_i}}$</p>
+<h4 id="约数相关"><a href="#约数相关" class="headerlink" title="约数相关"></a>约数相关</h4><p>将 $p_k$ 互相组合, 所得乘积的集合即为该数除 $1$ 外的约数集. 考虑乘法原理, 有约数个数 $S = \prod(\alpha_i + 1)$.</p>
+<p>对于约数和, 考虑构造一个多项式, 的质因数互相组合的去乘, 并使之相使所有加. 可以构造出 $S’ = \prod\sum{(p_k^{\alpha_k} + 1)}$.</p>
+<h4 id="无穷多素数的证明"><a href="#无穷多素数的证明" class="headerlink" title="无穷多素数的证明"></a>无穷多素数的证明</h4><p>对于调和级数 $f(n) = \sum_{i = 1}^\infty\frac{1}{i}$. 对于素数和 1, 可以直接用原数表示. 对于合数, 可以将其分解质因数. 这样我们可以像求约数和那样, 构造多项式, 将所有正整数表示出来.于是我们有:</p>
 <script type="math/tex; mode=display">
-\begin{align}
-D(x) &= \int_{x_0}^x P(x^{\prime})\,\mathrm{dx^{\prime}}  \\
- &= C\int_{x_0}^x x^{\prime n}\,\mathrm{dx^{\prime}} \\
-&= \frac{C}{n+1}(x^{n+1}-x_0^{n+1}) \\
-&\equiv  y
-\end{align}</script>
+\sum_{i = 1}^\infty\frac{1}{i} = \prod\sum{(p_k^{\alpha_k} + 1)}</script><p>假设素数是有限的, 等号右边的函数应有一个上确界. 而调和级数是发散的, 与假设矛盾. 故素数为无穷个成立.</p>
+<h4 id="求素数"><a href="#求素数" class="headerlink" title="求素数"></a>求素数</h4><p>求 1 到 n 所有素数.</p>
+<h5 id="试除法"><a href="#试除法" class="headerlink" title="试除法"></a>试除法</h5><p>对于每个数, 尝试所有 2 到 n / 2 的整数. 时间复杂度 $O(n^2)$.</p>
+<h5 id="埃氏筛"><a href="#埃氏筛" class="headerlink" title="埃氏筛"></a>埃氏筛</h5><p>每次遍历到一个没被筛过的数, 将其加入素数列表并将其倍数筛去. 时间复杂度 $O(n\ ln\ ln\ n)$.</p>
+<h5 id="欧拉筛"><a href="#欧拉筛" class="headerlink" title="欧拉筛"></a>欧拉筛</h5><p>埃氏筛的瓶颈在于有很多数被重复筛, 考虑每个数只用其最小质因子来筛. 时间复杂度 $O(n)$.伪代码如下.</p>
+<p>$Euler\ (n)$<br>$1\ \ \ \ for\ \ i\ \ in\ \ 2..n$<br>$2\ \ \ \ \ \ \ \ \ \ if\ \ i\ \ isn’t\ \ visited$<br>$3\ \ \ \ \ \ \ \ \ \ add\ \ i\ \ to\ \ prime\ \ number\ \ list$<br>$4\ \ \ \ \ \ \ \ \ \ for\ \ j\ \ in\ \ prime\ \ number\ \ list$<br>$5\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if\ \ the\ \ minimum\ \ prime\ \ factor\ \ of\ \ i\ \ &gt;=\ \ j$<br>$6\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ let\ \ i \times j\ \ be\ \ visited$</p>
+
             </div>
 
             <!-- Post Comments -->
@@ -198,8 +207,8 @@ $('.btn_click_load').click(function() {
 -->
 <script type="text/javascript">
     var disqus_config = function () {
-        this.page.url = 'http://echocat.one/2023/a04/16/hello-world/';  // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = 'http://echocat.one/2023/a04/16/hello-world/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        this.page.url = 'http://echocat.one/2023/a05/04/DivisibilityRule-PrimeNumber/';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = 'http://echocat.one/2023/a05/04/DivisibilityRule-PrimeNumber/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
 </script>
 
